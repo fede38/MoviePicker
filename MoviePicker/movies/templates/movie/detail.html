@@ -2,6 +2,19 @@
 {% block title %}{{ movie.original_title }}{% endblock %}
 {% block content %}
 
-{{ movie.original_title }}
+<div id="movie-title">
+{{ movie.original_title }} ({{ movie.english_title }})
+</div>
+<div id="movie-titlesp">
+    {{ movie.spanish_title}}
+</div>
+<div id="movie-plot">
+    <!--<p>{{ movie.plot }}</p>-->
+</div>
+
+
+
+
+
 
 {% endblock %}
