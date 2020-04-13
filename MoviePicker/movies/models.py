@@ -1,0 +1,45 @@
+from django.db import models
+
+
+class Participant(models.Model):
+    full_name = models.CharField(unique=True, primary_key=True, max_length=128)
+
+    def __str__(self):
+        return self.full_name
+
+
+class Genre(models.Model):
+    name = models.CharField(unique=True, primary_key=True, max_length=64)
+
+    def __str__(self):
+        return self.name
+
+
+class Language(models.Model):
+    name = models.CharField(max_length=64)
+    reduced_name = models.CharField(max_length=2)
+
+    def __str__(self):
+        return self.name
+
+
+class Movie(models.Model):
+    original_title = models.CharField(max_length=64)
+    spanish_title = models.CharField(blank=True, max_length=64)
+    english_title = models.CharField(blank=True, max_length=64)
+    plot = models.TextField
+    poster = models.ImageField(blank=True, upload_to="images", height_field=100, width_field=100)
+    imdb_rating = models.DecimalField
+    rotten_rating = models.IntegerField
+    watched = models.BooleanField
+    year_of_release = models.IntegerField
+    genres = models.ManyToManyField(Genre)
+    languages = models.ManyToManyField(Language)
+    actors = models.ManyToManyField(Participant)
+    director = models.ForeignKey(Participant, null=True, on_delete=models.SET_NULL, related_name="director")
+    # TODO buscar manera de agregar videos para guardar el trailer
+    # TODO agregar nuestro propio rating
+    # TODO parental rating
+
+    def __str__(self):
+        return self.original_title
