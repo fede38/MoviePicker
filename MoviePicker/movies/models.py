@@ -27,12 +27,12 @@ class Movie(models.Model):
     original_title = models.CharField(max_length=64)
     spanish_title = models.CharField(blank=True, max_length=64)
     english_title = models.CharField(blank=True, max_length=64)
-    plot = models.TextField
-    poster = models.ImageField(blank=True, upload_to="images", height_field=100, width_field=100)
-    imdb_rating = models.DecimalField
-    rotten_rating = models.IntegerField
-    watched = models.BooleanField
-    year_of_release = models.IntegerField
+    plot = models.TextField(default="")
+    poster = models.ImageField(blank=True, upload_to="images")
+    imdb_rating = models.DecimalField(decimal_places=2, max_digits=3, default=0)
+    rotten_rating = models.IntegerField(default=0)
+    watched = models.BooleanField(default=False)
+    year_of_release = models.IntegerField(null=True)
     genres = models.ManyToManyField(Genre)
     languages = models.ManyToManyField(Language)
     actors = models.ManyToManyField(Participant)
