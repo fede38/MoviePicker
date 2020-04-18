@@ -9,4 +9,8 @@ def detail(request, movie_id):
         movie = Movie.objects.get(pk=movie_id)
     except Movie.DoesNotExist:
         raise Http404("La pelicula consultada no existe")
-    return render(request, 'movie/detail.html', {'movie': movie})
+    return render(request, 'detail.html', {'movie': movie})
+
+
+def index(request):
+    return render(request, 'index.html', {})
