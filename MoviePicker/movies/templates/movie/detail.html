@@ -3,14 +3,17 @@
 {% block content %}
 
 <div id="movie-title">
-    {{ movie.original_title }} ({{ movie.english_title }})
+    {{ movie.original_title }} ({{ movie.english_title }}) {{ movie.year_of_release }}
 </div>
+
 <div id="movie-titlesp">
     {{ movie.spanish_title}}
 </div>
+
 <div id="movie-plot">
-    <!--<p>{{ movie.plot }}</p>-->
+    {{ movie.plot }}
 </div>
+
 
 <img src="../../media/{{ movie.poster }}">
 
